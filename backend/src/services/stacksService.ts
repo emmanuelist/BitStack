@@ -40,4 +40,36 @@ export const createProfile = async (
   }
 };
 
+export const likePost = async (liker: string, postId: number) => {
+  try {
+    const txOptions = {
+      contractAddress: CONTRACT_ADDRESS,
+      contractName: CONTRACT_NAME,
+      functionName: "like-post",
+      functionArgs: [uintCV(postId)],
+      senderKey: process.env.STACKS_PRIVATE_KEY!,
+      network,
+    };
+
+    const transaction = await makeContractCall(txOptions);
+    const result = await network.broadcastTransaction(transaction);
+    return { success: true, txId: result.txid };
+  } catch (error) {
+    console.error("Error liking post on Stacks:", error);
+    return { success: false, error };
+  }
+};
+
+export const verifyMessageSignature = async (
+  stxAddress: string,
+  message: string,
+  signature: string
+): Promise<boolean> => {
+  return verifySignature({
+    message,
+    publicKey: stxAddress,
+    signature,
+  });
+};
+
 // Implement other Stacks-related functions

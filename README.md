@@ -240,7 +240,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 For questions or support, feel free to contact the project maintainers:
 
 - **GitHub Issues**: Submit an issue
-- **Email**: emmanuel.paul75@yahoo.com
+- **Email**: <emmanuel.paul75@yahoo.com>
 
 ---
 
